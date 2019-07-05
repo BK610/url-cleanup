@@ -26,7 +26,7 @@ function getClipboard() {
 
     textarea.value = '';
     return result;
-};
+}
 
 function setClipboard(value) {
     var result = false;
@@ -42,4 +42,4 @@ function setClipboard(value) {
 
     textarea.value = '';
     return result;
-};
+}
