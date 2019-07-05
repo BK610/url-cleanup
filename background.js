@@ -29,17 +29,20 @@ function getClipboard() {
 }
 
 function setClipboard(value) {
-    var result = false;
-    var textarea = document.getElementById('ta');
-    console.log(textarea.value);
-    console.log(value);
+    let result = false;
+    let textarea = document.getElementById('ta');
+
+    if (isUrl(value)) {
+        console.log("Copied value, " + value + " is a URL!");
+        value = cleanUrl(value);
+    }
     textarea.value = value;
     textarea.select();
 
     if (document.execCommand('copy')) {
         result = true;
     } else {
-        console.error('failed to get clipboard content');
+        console.error('Failed to set clipboard content');
     }
 
     textarea.value = '';
@@ -49,7 +52,7 @@ function setClipboard(value) {
 //TODO:
 // Add handling for URLs without "http" start
 // Add handling for problems within the URL
-function checkIfUrl(copiedValue) {
+function isUrl(copiedValue) {
     copiedValue = copiedValue.trim();
 
     if (copiedValue.startsWith("http")) {
@@ -57,4 +60,8 @@ function checkIfUrl(copiedValue) {
     } else {
         return false;
     }
+}
+
+function cleanUrl(url) {
+
 }
