@@ -8,6 +8,19 @@
   },
   "permissions": [
     "clipboardRead",
-    "clipboardWrite"
+    "clipboardWrite",
+    "contextMenus"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "contentscript.js"
+      ],
+      "run_at": "document_idle"
+    }
   ]
 }
