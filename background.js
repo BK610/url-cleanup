@@ -31,6 +31,8 @@ function getClipboard() {
 function setClipboard(value) {
     var result = false;
     var textarea = document.getElementById('ta');
+    console.log(textarea.value);
+    console.log(value);
     textarea.value = value;
     textarea.select();
 
@@ -42,4 +44,17 @@ function setClipboard(value) {
 
     textarea.value = '';
     return result;
+}
+
+//TODO:
+// Add handling for URLs without "http" start
+// Add handling for problems within the URL
+function checkIfUrl(copiedValue) {
+    copiedValue = copiedValue.trim();
+
+    if (copiedValue.startsWith("http")) {
+        return true;
+    } else {
+        return false;
+    }
 }
